@@ -6,7 +6,7 @@ class Api::V1::UserDestinationsController < ApplicationController
 
     def create
         @user_destination = UserDestination.create(user_destination_params)
-        render json: @user_destination
+        render json: { user_destination: @user_destination }
     end
 
     def update
