@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :follows, only: [:index, :create, :destroy]
       post '/login', to: 'auth#login'
       get '/other-users/:id', to: 'users#show_other_user'
+      get '/other-users-by-username/:username', to: 'users#show_other_users_by_username'
     end
   end
 end
