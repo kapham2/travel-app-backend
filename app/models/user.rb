@@ -1,3 +1,5 @@
+include Rails.application.routes.url_helpers
+Rails.application.routes.default_url_options[:host] = 'localhost:3333'
 class User < ApplicationRecord
     has_many :user_destinations
     has_many :destinations, through: :user_destinations
@@ -28,10 +30,48 @@ class User < ApplicationRecord
         end
     end
 
-    def more_users
-        User.all.to_a.select do |user|
-            !self.following.to_a.include?(user) && user != self
+    def followers_with_avatar_url
+        self.followers.map do |user|
+            new_user = user.attributes
+            new_user["avatar_url"] = avatar_url_for(user)
+            new_user
         end
     end
 
+    def following_with_avatar_url
+        self.following.map do |user|
+            new_user = user.attributes
+            new_user["avatar_url"] = avatar_url_for(user)
+            new_user
+        end
+    end
+
+    def more_users_with_avatar_url
+        more_users = User.all.to_a.select do |user|
+            !self.following.to_a.include?(user) && user != self
+        end
+
+        more_users.map do |user|
+            new_user = user.attributes
+            new_user["avatar_url"] = avatar_url_for(user)
+            new_user
+        end
+
+    end
+
+    def avatar_url_for(user)
+        if (user.avatar.attached?)
+            url_for(user.avatar)
+        else
+            "/users/dog#{user.id % 10}.jpg"
+        end
+    end
+
+    def avatar_url
+        if (self.avatar.attached?)
+            url_for(self.avatar)
+        else
+            "/users/dog#{self.id % 10}.jpg"
+        end
+    end        
 end
