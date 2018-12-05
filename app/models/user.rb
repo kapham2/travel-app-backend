@@ -63,7 +63,7 @@ class User < ApplicationRecord
         if (user.avatar.attached?)
             url_for(user.avatar)
         else
-            "/users/dog#{user.id % 10}.jpg"
+            "/users/dog#{user.id % 50}.jpg"
         end
     end
 
@@ -71,7 +71,7 @@ class User < ApplicationRecord
         if (self.avatar.attached?)
             url_for(self.avatar)
         else
-            "/users/dog#{self.id % 10}.jpg"
+            "/users/dog#{self.id % 50}.jpg"
         end
     end        
 end
