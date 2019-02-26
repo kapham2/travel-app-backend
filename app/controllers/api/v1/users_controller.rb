@@ -85,7 +85,7 @@ class Api::V1::UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        # @user.avatar.purge
+        @user.avatar.purge
         @user.avatar.attach(user_params[:avatar])
         render json: { avatar_url: url_for(@user.avatar) }
     end
