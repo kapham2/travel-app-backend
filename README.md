@@ -1,24 +1,5 @@
-# README
+# hello-world-app-backend
+This is the backend code for [Hello World](https://kapham2.github.io/hello-world-app-frontend/). For more information about the app, please see [kapham2/hello-world-app-frontend](https://github.com/kapham2/hello-world-app-frontend).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Contributors
+* **Kim Pham**
